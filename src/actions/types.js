@@ -1,3 +1,4 @@
 export const ADD_SNEAKER = "ADD_SNEAKER";
 export const DELETE_SNEAKER = "DELETE_SNEAKER";
 export const EDIT_SNEAKER = "EDIT_SNEAKER";
+export const UPDATE_SNEAKER = "UPDATE_SNEAKER";

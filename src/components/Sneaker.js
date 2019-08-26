@@ -8,9 +8,10 @@ function Sneaker(props) {
     console.log(props);
   };
 
-  const handleDeleteSneaker = () => {
-    console.log(props.sneaker.upcId);
+  const handleDeleteSneaker = e => {
+    // e.preventDefault();
     dispatch(deleteSneaker(props.sneaker.upcId));
+    props.handleDeleteSneaker();
   };
   return (
     <div>

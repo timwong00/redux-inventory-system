@@ -11,10 +11,14 @@ function Cell() {
     setIsAdding(!isAdding);
   };
 
+  const handleDeleteSneaker = () => {
+    setIsAdding(!isAdding);
+  };
+
   return (
     <div className="cell">
       {isAdding ? (
-        <SneakerForm></SneakerForm>
+        <SneakerForm handleDeleteSneaker={handleDeleteSneaker}></SneakerForm>
       ) : (
         <p className="addSneakerBtn" onClick={handleIsAdding}>
           Add a Sneaker
