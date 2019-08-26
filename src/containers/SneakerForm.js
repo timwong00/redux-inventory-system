@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sneaker from "../components/Sneaker";
 import { addSneaker } from "../actions";
 import { useDispatch } from "react-redux";
+import "./SneakerForm.css";
 
 function SneakerForm(props) {
   const [hasSneakerData, setSneakerData] = useState(false);
@@ -30,7 +31,7 @@ function SneakerForm(props) {
   };
 
   return (
-    <div>
+    <div className="sneakerCell">
       {hasSneakerData ? (
         <Sneaker
           key={data.upcId}
@@ -38,23 +39,15 @@ function SneakerForm(props) {
           handleDeleteSneaker={handleDeleteSneaker}
         ></Sneaker>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Brand:
-            <input {...brand} />
-          </label>
-          <label>
-            Style:
-            <input {...style} />
-          </label>
-          <label>
-            Size:
-            <input {...size} />
-          </label>
-          <label>
-            UPC ID:
-            <input {...upcId} />
-          </label>
+        <form className="sneakerForm" onSubmit={handleSubmit}>
+          <label>Brand:</label>
+          <input {...brand} />
+          <label>Style:</label>
+          <input {...style} />
+          <label>Size:</label>
+          <input {...size} />
+          <label>UPC ID:</label>
+          <input {...upcId} />
           <button>Submit</button>
         </form>
       )}

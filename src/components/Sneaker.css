@@ -1,0 +1,15 @@
+.sneakerContainer,
+.sneaker {
+  width: 100%;
+  height: 100%;
+}
+
+.sneaker > p {
+  margin: 1px;
+}
+
+.sneaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

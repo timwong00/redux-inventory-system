@@ -1,4 +1,4 @@
-import { ADD_SNEAKER, DELETE_SNEAKER } from "./types";
+import { ADD_SNEAKER, DELETE_SNEAKER, UPDATE_SNEAKER } from "./types";
 
 export const addSneaker = sneakerData => {
   return {
@@ -11,5 +11,13 @@ export const deleteSneaker = upcId => {
   return {
     type: DELETE_SNEAKER,
     upcId
+  };
+};
+
+export const updateSneaker = (newSneakerData, oldUpcId) => {
+  return {
+    type: UPDATE_SNEAKER,
+    payload: newSneakerData,
+    oldUpcId
   };
 };

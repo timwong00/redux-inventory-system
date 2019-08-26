@@ -1,26 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { deleteSneaker } from "../actions/index";
 import { useDispatch } from "react-redux";
+import EditSneakerForm from "../containers/EditSneakerForm";
+import "./Sneaker.css";
+import { useSelector } from "react-redux";
 
 function Sneaker(props) {
+  const [isEditing, setIsEditing] = useState(false);
+  const sneakers = useSelector(state => state.sneakerReducer);
   const dispatch = useDispatch();
-  const handleEditSneaker = () => {
-    console.log(props);
-  };
 
   const handleDeleteSneaker = e => {
-    // e.preventDefault();
     dispatch(deleteSneaker(props.sneaker.upcId));
     props.handleDeleteSneaker();
   };
+
+  const handleEditSneaker = e => {
+    setIsEditing(!isEditing);
+  };
+
   return (
-    <div>
-      <p>Brand: {props.sneaker.brand}</p>
-      <p>Style: {props.sneaker.style}</p>
-      <p>Size: {props.sneaker.size}</p>
-      <p>UPC ID: {props.sneaker.upcId}</p>
-      <button onClick={handleEditSneaker}>Edit</button>
-      <button onClick={handleDeleteSneaker}>Delete</button>
+    <div className="sneakerContainer">
+      {isEditing ? (
+        <EditSneakerForm
+          sneaker={props.sneaker}
+          handleEditSneaker={handleEditSneaker}
+        ></EditSneakerForm>
+      ) : (
+        <div className="sneaker">
+          <p>Brand: {props.sneaker.brand}</p>
+          <p>Style: {props.sneaker.style}</p>
+          <p>Size: {props.sneaker.size}</p>
+          <p>UPC ID: {props.sneaker.upcId}</p>
+          <button onClick={handleEditSneaker}>Edit</button>
+          <button onClick={handleDeleteSneaker}>Delete</button>
+        </div>
+      )}
     </div>
   );
 }

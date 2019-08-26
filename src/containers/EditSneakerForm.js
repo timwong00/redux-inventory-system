@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import Sneaker from "../components/Sneaker";
-import { editSneaker } from "../actions";
+import { updateSneaker } from "../actions";
 import { useDispatch } from "react-redux";
 
-function SneakerForm() {
-  const [isEditing, setIsEditing] = useState(false);
+function EditSneakerForm(props) {
   const dispatch = useDispatch();
-  const brand = useFormInput("");
-  const style = useFormInput("");
-  const size = useFormInput("");
-  const upcId = useFormInput("");
+  const newBrand = useFormInput(props.sneaker.brand);
+  const newStyle = useFormInput(props.sneaker.style);
+  const newSize = useFormInput(props.sneaker.size);
+  const newUpcId = useFormInput(props.sneaker.upcId);
 
-  const data = {
-    brand: brand.value,
-    style: style.value,
-    size: size.value,
-    upcId: upcId.value
+  const newData = {
+    newBrand: newBrand.value,
+    newStyle: newStyle.value,
+    newSize: newSize.value,
+    newUpcId: newUpcId.value
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(updateSneaker(newData, props.sneaker.upcId));
+    props.handleEditSneaker();
   };
 
   return (
@@ -27,23 +28,22 @@ function SneakerForm() {
       <form onSubmit={handleSubmit}>
         <label>
           Brand:
-          <input {...brand} />
+          <input {...newBrand} />
         </label>
         <label>
           Style:
-          <input {...style} />
+          <input {...newStyle} />
         </label>
         <label>
           Size:
-          <input {...size} />
+          <input {...newSize} />
         </label>
         <label>
           UPC ID:
-          <input {...upcId} />
+          <input {...newUpcId} />
         </label>
-        <button>Submit</button>
+        <button>Update</button>
       </form>
-      )
     </div>
   );
 }
@@ -61,4 +61,4 @@ const useFormInput = initialValue => {
   };
 };
 
-export default SneakerForm;
+export default EditSneakerForm;
