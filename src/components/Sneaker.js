@@ -14,7 +14,7 @@ function Sneaker(props) {
   );
 
   const handleDeleteSneaker = () => {
-    dispatch(deleteSneaker(sneaker[props.cellKey].upcId));
+    dispatch(deleteSneaker(sneaker[sneakerIndex].upcId));
     props.handleDeleteSneaker();
   };
 
