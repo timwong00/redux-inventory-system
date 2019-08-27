@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sneaker from "../components/Sneaker";
+import Sneaker from "./Sneaker";
 import { addSneaker } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
 import "./SneakerForm.css";

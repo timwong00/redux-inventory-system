@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { deleteSneaker } from "../actions/index";
 import { useDispatch } from "react-redux";
-import EditSneakerForm from "../containers/EditSneakerForm";
+import EditSneakerForm from "./EditSneakerForm";
 import "./Sneaker.css";
 import { useSelector } from "react-redux";
 
