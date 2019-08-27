@@ -7,11 +7,14 @@ import { useSelector } from "react-redux";
 
 function Sneaker(props) {
   const [isEditing, setIsEditing] = useState(false);
-  const sneakers = useSelector(state => state.sneakerReducer);
+  const sneaker = useSelector(state => state.sneakerReducer);
   const dispatch = useDispatch();
+  const sneakerIndex = sneaker.findIndex(
+    sneaker => props.cellKey === sneaker.cellKey
+  );
 
-  const handleDeleteSneaker = e => {
-    dispatch(deleteSneaker(props.sneaker.upcId));
+  const handleDeleteSneaker = () => {
+    dispatch(deleteSneaker(sneaker[props.cellKey].upcId));
     props.handleDeleteSneaker();
   };
 
@@ -23,15 +26,15 @@ function Sneaker(props) {
     <div className="sneakerContainer">
       {isEditing ? (
         <EditSneakerForm
-          sneaker={props.sneaker}
+          sneaker={sneaker[sneakerIndex]}
           handleEditSneaker={handleEditSneaker}
         ></EditSneakerForm>
       ) : (
         <div className="sneaker">
-          <p>Brand: {props.sneaker.brand}</p>
-          <p>Style: {props.sneaker.style}</p>
-          <p>Size: {props.sneaker.size}</p>
-          <p>UPC ID: {props.sneaker.upcId}</p>
+          <p>Brand: {sneaker[sneakerIndex].brand}</p>
+          <p>Style: {sneaker[sneakerIndex].style}</p>
+          <p>Size: {sneaker[sneakerIndex].size}</p>
+          <p>UPC ID: {sneaker[sneakerIndex].upcId}</p>
           <button onClick={handleEditSneaker}>Edit</button>
           <button onClick={handleDeleteSneaker}>Delete</button>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Sneaker from "../components/Sneaker";
 import { updateSneaker } from "../actions";
 import { useDispatch } from "react-redux";
+import "./EditSneakerForm.css";
 
 function EditSneakerForm(props) {
   const dispatch = useDispatch();
@@ -24,24 +24,16 @@ function EditSneakerForm(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Brand:
-          <input {...newBrand} />
-        </label>
-        <label>
-          Style:
-          <input {...newStyle} />
-        </label>
-        <label>
-          Size:
-          <input {...newSize} />
-        </label>
-        <label>
-          UPC ID:
-          <input {...newUpcId} />
-        </label>
+    <div className="editFormContainer">
+      <form className="editSneakerForm" onSubmit={handleSubmit}>
+        <label>Brand:</label>
+        <input {...newBrand} />
+        <label>Style:</label>
+        <input {...newStyle} />
+        <label>Size:</label>
+        <input {...newSize} />
+        <label>UPC ID:</label>
+        <input {...newUpcId} />
         <button>Update</button>
       </form>
     </div>

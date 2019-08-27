@@ -3,7 +3,7 @@ import { ADD_SNEAKER, DELETE_SNEAKER, UPDATE_SNEAKER } from "../actions/types";
 const sneakerReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_SNEAKER:
-      return [...state, Object.assign({}, action.payload)];
+      return state.concat(action.payload);
     case DELETE_SNEAKER:
       return state.filter(sneakerData => sneakerData.upcId !== action.upcId);
     case UPDATE_SNEAKER:

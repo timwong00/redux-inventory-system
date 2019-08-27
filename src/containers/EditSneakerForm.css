@@ -1,15 +1,12 @@
-.sneakerContainer,
-.sneaker {
+.editFormContainer,
+.editSneakerForm {
   width: 100%;
   height: 100%;
 }
 
-.sneaker > p {
-  margin: 5px;
-}
-
-.sneaker {
+.editSneakerForm {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }

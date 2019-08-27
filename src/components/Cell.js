@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./Cell.css";
 import SneakerForm from "../containers/SneakerForm";
-import Sneaker from "../components/Sneaker";
-import { useSelector } from "react-redux";
 
-function Cell() {
+function Cell(props) {
   const [isAdding, setIsAdding] = useState(false);
 
   const handleIsAdding = () => {
@@ -18,7 +16,10 @@ function Cell() {
   return (
     <div className="cell">
       {isAdding ? (
-        <SneakerForm handleDeleteSneaker={handleDeleteSneaker}></SneakerForm>
+        <SneakerForm
+          handleDeleteSneaker={handleDeleteSneaker}
+          cellKey={props.cellKey}
+        ></SneakerForm>
       ) : (
         <p className="addSneakerBtn" onClick={handleIsAdding}>
           Add a Sneaker

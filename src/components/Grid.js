@@ -6,7 +6,7 @@ function Grid() {
   const sneakerGrid = [];
   const createGrid = num => {
     for (let i = 0; i < num; i++) {
-      sneakerGrid.push(<Cell key={i} />);
+      sneakerGrid.push(<Cell key={i} cellKey={i} />);
     }
     return sneakerGrid;
   };

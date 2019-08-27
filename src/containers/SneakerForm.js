@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import Sneaker from "../components/Sneaker";
 import { addSneaker } from "../actions";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./SneakerForm.css";
 
 function SneakerForm(props) {
   const [hasSneakerData, setSneakerData] = useState(false);
+  const sneaker = useSelector(state => state.sneakerReducer);
   const dispatch = useDispatch();
   const brand = useFormInput("");
   const style = useFormInput("");
   const size = useFormInput("");
   const upcId = useFormInput("");
 
+  console.log(sneaker);
   const data = {
     brand: brand.value,
     style: style.value,
     size: size.value,
-    upcId: upcId.value
+    upcId: upcId.value,
+    cellKey: props.cellKey
   };
 
   const handleSubmit = e => {
@@ -35,7 +38,8 @@ function SneakerForm(props) {
       {hasSneakerData ? (
         <Sneaker
           key={data.upcId}
-          sneaker={data}
+          cellKey={props.cellKey}
+          // sneaker={data}
           handleDeleteSneaker={handleDeleteSneaker}
         ></Sneaker>
       ) : (
