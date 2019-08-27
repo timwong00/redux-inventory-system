@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import Sneaker from "./Sneaker";
 import { addSneaker } from "../actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./SneakerForm.css";
 
 function SneakerForm(props) {
   const [hasSneakerData, setSneakerData] = useState(false);
-  const sneaker = useSelector(state => state.sneakerReducer);
   const dispatch = useDispatch();
   const brand = useFormInput("");
   const style = useFormInput("");
   const size = useFormInput("");
   const upcId = useFormInput("");
 
-  console.log(sneaker);
   const data = {
     brand: brand.value,
     style: style.value,
