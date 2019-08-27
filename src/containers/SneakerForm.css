@@ -17,3 +17,7 @@ label {
 input {
   width: 100px;
 }
+
+.sneakerForm > button {
+  width: 50%;
+}
