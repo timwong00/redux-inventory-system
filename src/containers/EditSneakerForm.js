@@ -33,7 +33,7 @@ function EditSneakerForm(props) {
         <label>Size:</label>
         <input {...newSize} />
         <label>UPC ID:</label>
-        <input {...newUpcId} />
+        <input {...newUpcId} required />
         <button>Update</button>
       </form>
     </div>

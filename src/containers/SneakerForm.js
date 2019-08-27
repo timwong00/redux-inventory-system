@@ -51,7 +51,7 @@ function SneakerForm(props) {
           <label>Size:</label>
           <input {...size} />
           <label>UPC ID:</label>
-          <input {...upcId} />
+          <input {...upcId} required />
           <button>Submit</button>
         </form>
       )}
